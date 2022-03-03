@@ -1,8 +1,8 @@
 package com.lopixlabs.app.fullstackdemo;
 
-import lombok.Value;
+import lombok.Data;
 
-@Value(staticConstructor = "of")
+@Data(staticConstructor = "of")
 public class Hello {
     String value;
 }
