@@ -4,10 +4,11 @@ import {MantineProvider} from '@mantine/core'
 
 function App() {
 
-  const apiGatewayUrl = "http://localhost:8080"
+  const serviceUrl = import.meta.env.VITE_SERVICE_URL as string || "";
+  console.log(import.meta.env.MODE);
 
   return (
-      <HttpClientProvider baseUrl={apiGatewayUrl}>
+      <HttpClientProvider baseUrl={serviceUrl}>
         <MantineProvider>
           <h1>Demo</h1>
           <hr/>

@@ -1,11 +1,14 @@
 .EXPORT_ALL_VARIABLES:
 PROJECT_VERSION=0.0.0-SNAPSHOT
 
-build: build-openapi
+build-all: build-openapi
 	mvn package -Pprod
 
-build-fast: build-openapi
+build-fast:
 	mvn package -Pprod -DskipTests -DskipChecks
+
+build:
+	mvn package -Pprod
 
 build-openapi:
 	mvn package -Popen-api -DskipTests -DskipChecks -am -pl "service"
