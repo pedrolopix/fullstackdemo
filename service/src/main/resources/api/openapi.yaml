@@ -1,0 +1,24 @@
+---
+openapi: 3.0.3
+info:
+  title: service API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /hello:
+    get:
+      tags:
+      - Greeting Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hello'
+components:
+  schemas:
+    Hello:
+      type: object
+      properties:
+        value:
+          type: string
