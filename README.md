@@ -15,17 +15,17 @@
 
 ## How to run project
 
-###Develop mode
+### Develop mode
 * backend:   
 `make dev-service`  
 
 * frontend:   
 `make dev-web`  
 
-* for generate http conde for frontend with open-api data  
+* for generate http code for frontend with open-api data  
 `make open-api`
 
-###Build
+### Build
 * for build all   
 `make build`
 
