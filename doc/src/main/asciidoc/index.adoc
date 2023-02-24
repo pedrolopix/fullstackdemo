@@ -1,0 +1,3 @@
+= ExploSafe
+
+<<openapi/index.adoc#, Api>>
