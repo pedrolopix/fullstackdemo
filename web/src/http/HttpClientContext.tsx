@@ -16,11 +16,10 @@ type HttpClientFactoryContext = ReturnType<typeof getFactory> & {
   axiosInstance: AxiosInstance;
 };
 
-// eslint-disable-next-line react/prop-types
-export const HttpClientProvider: React.FC<{ baseUrl: string }> = ({
-                                                                    baseUrl,
-                                                                    children,
-                                                                  }) => {
+export const HttpClientProvider: React.FC<{ baseUrl: string, children?: React.ReactNode }> = ({
+                                                                                                baseUrl,
+                                                                                                children,
+                                                                                              }) => {
   const [currentBaseUrl, setBaseUrl] = useState<string>(baseUrl);
   const [config, setConfig] = useState<HttpClientFactoryContext>(() => ({
     ...getFactory(baseUrl),

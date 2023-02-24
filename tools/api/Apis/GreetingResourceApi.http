@@ -1,0 +1,5 @@
+## GreetingResourceApi
+
+### 
+# @name helloGet
+GET http://localhost:8080/hello
