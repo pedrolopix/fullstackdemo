@@ -27,4 +27,5 @@ web-build:
 web-dev:
 	yarn start --prefix ./web
 
-
+generate-jwt:
+	mvn exec:java -pl "service" -Dexec.mainClass=com.lopixlabs.app.fullstackdemo.GenerateToken -Dexec.classpathScope=test -Dsmallrye.jwt.sign.key.location=privateKey.pem

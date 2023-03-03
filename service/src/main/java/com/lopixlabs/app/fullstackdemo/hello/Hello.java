@@ -1,4 +1,4 @@
-package com.lopixlabs.app.fullstackdemo;
+package com.lopixlabs.app.fullstackdemo.hello;
 
 import lombok.Value;
 
