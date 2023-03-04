@@ -1049,6 +1049,13 @@ svelte-preprocess@^4.0.0, svelte-preprocess@^4.10.7:
     sorcery "^0.10.0"
     strip-indent "^3.0.0"
 
+svelte-router-spa@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/svelte-router-spa/-/svelte-router-spa-6.0.3.tgz#2f769f4b124ac5995dcdfd43b4e887b44ad6cb5a"
+  integrity sha512-aHgyUVVI/WjipQNmKcXpX0hFZtkW5Y6hwH5aXLr2P/aRQ/qlX8ZbKQJUwKjOD59p7tt/c+wqokiIt68N7aNuKQ==
+  dependencies:
+    url-params-parser "^1.0.3"
+
 svelte@^3.55.1:
   version "3.55.1"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.55.1.tgz#6f93b153e5248039906ce5fe196efdb9e05dfce8"
@@ -1126,6 +1133,11 @@ upper-case-first@^2.0.2:
   integrity sha512-514ppYHBaKwfJRK/pNC6c/OxfGa0obSnAl106u97Ed0I625Nin96KAjttZF6ZL3e1XLtphxnqrOi9iWgm+u+bg==
   dependencies:
     tslib "^2.0.3"
+
+url-params-parser@^1.0.3:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/url-params-parser/-/url-params-parser-1.0.4.tgz#10003b232e9cd13e2ba2374a1abc6e1aa8ff1b67"
+  integrity sha512-0m6BqGpY2OetTZ3UPTLKkbTfUHigsX2YhrzORT9iYiyUJ/SP2WJ3cggg2YWtvMs36GPwK9Q44ffddyarniu2Tg==
 
 util-deprecate@^1.0.2:
   version "1.0.2"
