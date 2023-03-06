@@ -10,8 +10,7 @@ const userIsAdmin = () => true;
 export const routes = [
   {
     name: '/',
-    component: PublicPage,
-    layout: AppLayout,
+    component: PublicPage
   },
   {name: "login", component: Login},
   {name: "dashboard", component: Dashboard, layout: AppLayout},
