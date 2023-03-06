@@ -12,10 +12,10 @@ class GreetingResourceTest {
     @Test
     void testHelloEndpoint() {
         given()
-          .when().get("/hello")
+          .when().get("/hello/permit-all")
           .then()
              .statusCode(200)
-             .body("value",is("hello from quarkus!!!"));
+             .body("value",is("hello + anonymous, isHttps: false, authScheme: null, hasJWT: false"));
     }
 
 }

@@ -12,7 +12,7 @@
     "description" : "Auto generated value"
   } ],
   "paths" : {
-    "/hello" : {
+    "/hello/permit-all" : {
       "get" : {
         "tags" : [ "Greeting Resource" ],
         "responses" : {
@@ -27,6 +27,34 @@
             }
           }
         }
+      }
+    },
+    "/hello/roles-allowed" : {
+      "get" : {
+        "tags" : [ "Greeting Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Hello"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ "User", "Admin" ]
+        }, {
+          "SecurityScheme" : [ "User", "Admin" ]
+        } ]
       }
     }
   },
