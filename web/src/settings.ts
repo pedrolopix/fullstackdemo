@@ -4,7 +4,7 @@ import Logo from "./lib/Logo.svelte";
 import Login from "./auth/Login.svelte";
 import EmptyPage from "./lib/EmptyPage.svelte";
 import DashboardPage from "./app/DashboardPage.svelte";
-import {chart_box, file_document} from './lib/icons';
+import {account_multiple, chart_box, file_document} from './lib/icons';
 
 
 export let modules = new Map<String, Module>();
@@ -26,4 +26,24 @@ export const app: App = {
 }
 
 export const sideBar: MenuItem[] = [toMenu(dashboardModule), toMenu(emptyModule)];
+export const menuBar: MenuItem[] = [
+  {
+    name: 'team',
+    iconData: account_multiple,
+    label: 'Team',
+    href: '#item2',
+    children: [
+      {
+        name: 'sub1',
+        label: 'Sub 1',
+        href: '#item2-sub1'
+      },
+      {
+        name: 'sub2',
+        label: 'Sub 2',
+        href: '#item2-sub2'
+      }
+    ]
+  }
+];
 

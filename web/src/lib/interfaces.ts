@@ -28,7 +28,7 @@ export interface MenuItem {
   badge?: string;
   badgeType?: 'info' | 'warn' | 'error' | 'success';
   href: string;
-  component: typeof SvelteComponent;
+  component?: typeof SvelteComponent;
   children?: GroupMenuItem[];
 }
 
