@@ -5,7 +5,7 @@
   import {Route} from 'svelte-router-spa'
   import Search from "./lib/Search.svelte";
   import Navigation from "./lib/Navigation.svelte";
-  import {app} from "./settings";
+  import {app, sideBar} from "./settings";
 
   let darkTheme = false;
   let openMenu = false;
@@ -21,11 +21,11 @@
   }
 
   $: if (darkTheme) {
-    const htmlElement = document.documentElement;
-    htmlElement.classList.add('dark');
+     const htmlElement = document.documentElement;
+     htmlElement.classList.add('dark');
   } else {
-    const htmlElement = document.documentElement;
-    htmlElement.classList.remove('dark');
+     const htmlElement = document.documentElement;
+     htmlElement.classList.remove('dark');
   }
 
 </script>
@@ -128,27 +128,20 @@
         expandedWidth="17rem"
     >
       <Layout.Content.Sidebar class="max-w-full bg-light-background dark:bg-dark-background">
-        <Navigation />
+        <Navigation items={sideBar}/>
       </Layout.Content.Sidebar>
       <Layout.Content.Body
           id="content-body"
-          class="relative h-full w-full overflow-x-hidden overflow-y-auto pt-[calc(1rem+var(--sat))] pb-[calc(1rem+var(--sab))] pr-[calc(1rem+var(--sar))] pl-[calc(1rem+var(--sal))] md:pt-[calc(2rem+var(--sat))] md:pb-[calc(2rem+var(--sab))] md:pr-[calc(2rem+var(--sar))] md:pl-[calc(2rem+var(--sal))]"
+          class="relative h-full w-full overflow-x-hidden overflow-y-auto pt-[calc(1rem+var(--sat))] pb-[calc(1rem+var(--sab))] pr-[calc(1rem+var(--sar))] pl-[calc(1rem+var(--sal))] md:pt-[calc(2rem+var(--sat))] md:pb-[calc(2rem+var(--sab))] md:pr-[calc(2rem+var(--sar))] md:pl-[calc(2rem+var(--sal))] bg-light-icon-background dark:bg-dark-icon-background text-light-icon dark:text-dark-icon"
       >
-        <div>
           <Row gutter="3" class="h-full w-full">
-            <!--{#if $page.data.header}-->
             <Col class="col-24 mb-4 ">
-<!--              <p>Route params are: {currentRoute.namedParams} and {currentRoute.queryParams}</p>-->
               <Route {currentRoute} {params}/>
-              <!--                <h1 class="text-light-content dark:text-dark-content mb-0"> page...-->
-              <!--                  &lt;!&ndash;{$page.data.header}&ndash;&gt;-->
-              <!--                </h1>-->
               <Divider/>
             </Col>
-            <!--{/if}-->
             <slot/>
           </Row>
-        </div>
+   v>
       </Layout.Content.Body>
     </Layout.Content>
   </Layout>
@@ -158,7 +151,7 @@
   {#if openMenu}
     <Drawer handleClose={closeOpenMenu} placement="left">
       <Drawer.Content class="overflow-y-auto p-4">
-        <Navigation handleClose={closeOpenMenu}/>
+        <Navigation items={sideBar} handleClose={closeOpenMenu}/>
       </Drawer.Content>
     </Drawer>
   {/if}
