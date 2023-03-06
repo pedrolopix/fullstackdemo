@@ -10,18 +10,18 @@
   "dependencies": {
     "@mantine/core": "^3.6.8",
     "@mantine/hooks": "^3.6.8",
-    "axios": "^0.26.0",
+    "axios": "^0.27.2",
     "axios-case-converter": "^0.9.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.21",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "@vitejs/plugin-react": "^1.0.7",
+    "@types/node": "^18.14.5",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
     "typescript": "^4.5.4",
-    "vite": "^2.9.13",
+    "vite": "^4.1.4",
     "yarn": "^2.4.3"
   }
 }
