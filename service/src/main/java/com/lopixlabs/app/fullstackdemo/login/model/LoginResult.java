@@ -1,10 +1,10 @@
-package com.lopixlabs.app.fullstackdemo.hello;
+package com.lopixlabs.app.fullstackdemo.login.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Value;
 
 @Value
 @AllArgsConstructor(staticName = "of")
-public class Hello {
-    String value;
+public class LoginResult {
+    String jwt;
 }

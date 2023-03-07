@@ -13,7 +13,9 @@ All URIs are relative to *http://localhost:8080*, but will link to the `.http` f
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GreetingResourceApi* | [**helloGet**](Apis/GreetingResourceApi.http#helloget) | **GET** /hello | 
+*GreetingResourceApi* | [**helloPermitAllGet**](Apis/GreetingResourceApi.http#hellopermitallget) | **GET** /hello/permit-all | 
+*GreetingResourceApi* | [**helloRolesAllowedGet**](Apis/GreetingResourceApi.http#hellorolesallowedget) | **GET** /hello/roles-allowed | 
+*LoginResourceApi* | [**apiLoginPost**](Apis/LoginResourceApi.http#apiloginpost) | **POST** /api/login | 
 
 
 

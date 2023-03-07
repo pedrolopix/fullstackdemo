@@ -12,6 +12,32 @@
     "description" : "Auto generated value"
   } ],
   "paths" : {
+    "/api/login" : {
+      "post" : {
+        "tags" : [ "Login Resource" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/hello/permit-all" : {
       "get" : {
         "tags" : [ "Greeting Resource" ],
@@ -64,6 +90,22 @@
         "type" : "object",
         "properties" : {
           "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Login" : {
+        "type" : "object",
+        "properties" : {
+          "authentication" : {
+            "type" : "string"
+          }
+        }
+      },
+      "LoginResult" : {
+        "type" : "object",
+        "properties" : {
+          "jwt" : {
             "type" : "string"
           }
         }

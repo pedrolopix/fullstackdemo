@@ -36,6 +36,32 @@ export interface Hello {
      */
     'value'?: string;
 }
+/**
+ * 
+ * @export
+ * @interface Login
+ */
+export interface Login {
+    /**
+     * 
+     * @type {string}
+     * @memberof Login
+     */
+    'authentication'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface LoginResult
+ */
+export interface LoginResult {
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginResult
+     */
+    'jwt'?: string;
+}
 
 /**
  * GreetingResourceApi - axios parameter creator
@@ -48,8 +74,37 @@ export const GreetingResourceApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helloGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/hello`;
+        helloPermitAllGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/hello/permit-all`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        helloRolesAllowedGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/hello/roles-allowed`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -87,8 +142,17 @@ export const GreetingResourceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async helloGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Hello>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.helloGet(options);
+        async helloPermitAllGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Hello>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helloPermitAllGet(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async helloRolesAllowedGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Hello>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helloRolesAllowedGet(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -106,8 +170,16 @@ export const GreetingResourceApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helloGet(options?: any): AxiosPromise<Hello> {
-            return localVarFp.helloGet(options).then((request) => request(axios, basePath));
+        helloPermitAllGet(options?: any): AxiosPromise<Hello> {
+            return localVarFp.helloPermitAllGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        helloRolesAllowedGet(options?: any): AxiosPromise<Hello> {
+            return localVarFp.helloRolesAllowedGet(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -125,8 +197,119 @@ export class GreetingResourceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GreetingResourceApi
      */
-    public helloGet(options?: AxiosRequestConfig) {
-        return GreetingResourceApiFp(this.configuration).helloGet(options).then((request) => request(this.axios, this.basePath));
+    public helloPermitAllGet(options?: AxiosRequestConfig) {
+        return GreetingResourceApiFp(this.configuration).helloPermitAllGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GreetingResourceApi
+     */
+    public helloRolesAllowedGet(options?: AxiosRequestConfig) {
+        return GreetingResourceApiFp(this.configuration).helloRolesAllowedGet(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * LoginResourceApi - axios parameter creator
+ * @export
+ */
+export const LoginResourceApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {Login} [login] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiLoginPost: async (login?: Login, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/login`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(login, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * LoginResourceApi - functional programming interface
+ * @export
+ */
+export const LoginResourceApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = LoginResourceApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {Login} [login] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiLoginPost(login?: Login, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LoginResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiLoginPost(login, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * LoginResourceApi - factory interface
+ * @export
+ */
+export const LoginResourceApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = LoginResourceApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {Login} [login] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiLoginPost(login?: Login, options?: any): AxiosPromise<LoginResult> {
+            return localVarFp.apiLoginPost(login, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * LoginResourceApi - object-oriented interface
+ * @export
+ * @class LoginResourceApi
+ * @extends {BaseAPI}
+ */
+export class LoginResourceApi extends BaseAPI {
+    /**
+     * 
+     * @param {Login} [login] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LoginResourceApi
+     */
+    public apiLoginPost(login?: Login, options?: AxiosRequestConfig) {
+        return LoginResourceApiFp(this.configuration).apiLoginPost(login, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
