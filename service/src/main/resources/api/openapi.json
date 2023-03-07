@@ -55,7 +55,7 @@
         }
       }
     },
-    "/hello/permit-all" : {
+    "/hello" : {
       "get" : {
         "tags" : [ "Greeting Resource" ],
         "responses" : {
@@ -72,6 +72,23 @@
         }
       }
     },
+    "/hello/permit-all" : {
+      "get" : {
+        "tags" : [ "Greeting Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Hello1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/hello/roles-allowed" : {
       "get" : {
         "tags" : [ "Greeting Resource" ],
@@ -81,7 +98,7 @@
             "content" : {
               "text/plain" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Hello"
+                  "$ref" : "#/components/schemas/Hello1"
                 }
               }
             }
@@ -104,6 +121,14 @@
   "components" : {
     "schemas" : {
       "Hello" : {
+        "type" : "object",
+        "properties" : {
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Hello1" : {
         "type" : "object",
         "properties" : {
           "value" : {
