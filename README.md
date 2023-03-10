@@ -9,9 +9,9 @@
 * [Open-api generate](https://openapi-generator.tech/docs/generators/typescript-axios)
 
 ## Frontend
-* [React](https://reactjs.org/)
+* [svelte](https://svelte.dev)
 * [Vite](https://vitejs.dev/)
-* [mantine](https://mantine.dev/)
+* [stwui](https://stwui.vercel.app/)
 
 ## How to run project
 

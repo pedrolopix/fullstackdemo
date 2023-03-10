@@ -24,7 +24,7 @@ public class TokenService {
             return Jwt.issuer(tokenSettings.getIssuer())
                 .upn(email)
                 .issuedAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(tokenSettings.getExpires()))
+                .expiresAt(Instant.now().plusSeconds(tokenSettings.getExpiresSeconds()))
                 .preferredUserName(username)
                 .groups(new HashSet<>(Arrays.asList(UserRole.ADMIN.name().toLowerCase(Locale.ROOT))))
                 .sign();
@@ -46,7 +46,7 @@ public class TokenService {
         return Jwt.issuer(tokenSettings.getIssuer())
             .upn(jwt.getClaim("upn"))
             .issuedAt(Instant.now())
-            .expiresAt(Instant.now().plusSeconds(tokenSettings.getExpires()))
+            .expiresAt(Instant.now().plusSeconds(tokenSettings.getExpiresSeconds()))
             .preferredUserName(jwt.getName())
             .groups(jwt.getGroups())
             .sign();

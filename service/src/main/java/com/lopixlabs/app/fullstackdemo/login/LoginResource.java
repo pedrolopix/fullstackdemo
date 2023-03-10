@@ -29,14 +29,9 @@ public class LoginResource {
     @POST
     @Path("login")
     @PermitAll
-    public LoginResult hello(final Login login) {
+    public LoginResult login(final Login login) {
         return loginService.login(login);
     }
 
-    @GET
-    @Path("renew")
-    public LoginResult hello() {
-        return loginService.renew(jwt);
-    }
 
 }

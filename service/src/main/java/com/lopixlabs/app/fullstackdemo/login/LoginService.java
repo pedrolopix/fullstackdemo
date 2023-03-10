@@ -19,14 +19,10 @@ public class LoginService {
     }
 
     public LoginResult login(final Login login) {
-        final String authentication = new String(Base64.decode("dXNlcjpwYXNz"));
+        final String authentication = new String(Base64.decode("dXNlcjpwYXNz")); //user:passs
 
         final String token = tokenService.generate("teste@test.com", "user");
         return LoginResult.of(token);
     }
 
-    public LoginResult renew(final JsonWebToken jwt) {
-        final String token = tokenService.renew(jwt);
-        return LoginResult.of(token);
-    }
 }

@@ -1,6 +1,5 @@
 package com.lopixlabs.app.fullstackdemo.security;
 
-import io.quarkus.runtime.annotations.ConfigItem;
 import javax.enterprise.context.ApplicationScoped;
 import lombok.Getter;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -8,9 +7,15 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 @ApplicationScoped
 @Getter
 public class TokenSettings {
-    @ConfigProperty(name = "mp.jwt.verify.issuer")
-    private String issuer;
+    public static final String EXPIRE_24HOURS = "86400";
+    private final String issuer;
+    private final int expiresSeconds;
 
-    @ConfigProperty(name = "jwt.expires", defaultValue = "3000")
-    private int expires;
+    public TokenSettings(
+        @ConfigProperty(name = "mp.jwt.verify.issuer") final String issuer,
+        @ConfigProperty(name = "jwt.expires", defaultValue = EXPIRE_24HOURS) final int expiresSeconds
+    ) {
+        this.issuer = issuer;
+        this.expiresSeconds = expiresSeconds;
+    }
 }
