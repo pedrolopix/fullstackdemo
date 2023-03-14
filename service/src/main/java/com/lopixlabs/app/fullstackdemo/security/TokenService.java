@@ -26,7 +26,7 @@ public class TokenService {
                 .issuedAt(Instant.now())
                 .expiresAt(Instant.now().plusSeconds(tokenSettings.getExpiresSeconds()))
                 .preferredUserName(username)
-                .groups(new HashSet<>(Arrays.asList(UserRole.ADMIN.name().toLowerCase(Locale.ROOT))))
+                .groups(new HashSet<>(Arrays.asList(UserRole.USER.name().toLowerCase(Locale.ROOT))))
                 .sign();
         } catch (Exception e) {
             log.error("Error generate token: " + e.getMessage(), e);

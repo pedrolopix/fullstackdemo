@@ -3,11 +3,8 @@ package com.lopixlabs.app.fullstackdemo.login;
 import com.lopixlabs.app.fullstackdemo.login.model.Login;
 import com.lopixlabs.app.fullstackdemo.login.model.LoginResult;
 import com.lopixlabs.app.fullstackdemo.security.TokenService;
-import java.util.Arrays;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import org.eclipse.microprofile.jwt.JsonWebToken;
-import org.jose4j.base64url.Base64;
 
 @ApplicationScoped
 public class LoginService {
@@ -19,9 +16,9 @@ public class LoginService {
     }
 
     public LoginResult login(final Login login) {
-        final String authentication = new String(Base64.decode("dXNlcjpwYXNz")); //user:passs
+        //final String authentication = new String(Base64.decode(authorization)); //user:passs
 
-        final String token = tokenService.generate("teste@test.com", "user");
+        final String token = tokenService.generate("teste@test.com", login.getUsername());
         return LoginResult.of(token);
     }
 

@@ -64,6 +64,16 @@
             <artifactId>quarkus-test-security</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus.resteasy.reactive</groupId>
+            <artifactId>resteasy-reactive-common</artifactId>
+            <version>2.16.4.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-security-jpa</artifactId>
+            <version>2.16.4.Final</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -1,13 +1,18 @@
 ---
 openapi: 3.0.3
 info:
-  title: service API
-  version: 1.0.0-SNAPSHOT
+  title: Quarkus and svelte demo application
+  version: 1.0.0
 servers:
 - url: http://localhost:8080
   description: Auto generated value
 - url: http://0.0.0.0:8080
   description: Auto generated value
+security:
+- basicAuth: []
+tags:
+- name: Demo
+  description: Quarkus and svelte demo application
 paths:
   /api/login:
     post:
@@ -25,7 +30,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResult'
-  /api/renew:
+  /api/me:
     get:
       tags:
       - Login Resource
@@ -36,17 +41,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResult'
-  /hello:
-    get:
-      tags:
-      - Greeting Resource
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Hello'
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      security:
+      - SecurityScheme:
+        - user
+      - SecurityScheme:
+        - user
   /hello/permit-all:
     get:
       tags:
@@ -57,7 +60,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hello1'
+                $ref: '#/components/schemas/Hello'
   /hello/roles-allowed:
     get:
       tags:
@@ -68,18 +71,18 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/Hello1'
+                $ref: '#/components/schemas/Hello'
         "401":
           description: Not Authorized
         "403":
           description: Not Allowed
       security:
       - SecurityScheme:
-        - User
-        - Admin
+        - user
+        - admin
       - SecurityScheme:
-        - User
-        - Admin
+        - user
+        - admin
 components:
   schemas:
     Hello:
@@ -87,18 +90,15 @@ components:
       properties:
         value:
           type: string
-    Hello1:
-      type: object
-      properties:
-        value:
-          type: string
     Login:
       type: object
       properties:
-        authentication:
+        username:
+          type: string
+        password:
           type: string
     LoginResult:
       type: object
       properties:
-        jwt:
+        token:
           type: string

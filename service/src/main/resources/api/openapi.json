@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.3",
   "info" : {
-    "title" : "service API",
-    "version" : "1.0.0-SNAPSHOT"
+    "title" : "Quarkus and svelte demo application",
+    "version" : "1.0.0"
   },
   "servers" : [ {
     "url" : "http://localhost:8080",
@@ -10,6 +10,13 @@
   }, {
     "url" : "http://0.0.0.0:8080",
     "description" : "Auto generated value"
+  } ],
+  "security" : [ {
+    "basicAuth" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Demo",
+    "description" : "Quarkus and svelte demo application"
   } ],
   "paths" : {
     "/api/login" : {
@@ -38,7 +45,7 @@
         }
       }
     },
-    "/api/renew" : {
+    "/api/me" : {
       "get" : {
         "tags" : [ "Login Resource" ],
         "responses" : {
@@ -51,11 +58,22 @@
                 }
               }
             }
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          },
+          "403" : {
+            "description" : "Not Allowed"
           }
-        }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ "user" ]
+        }, {
+          "SecurityScheme" : [ "user" ]
+        } ]
       }
     },
-    "/hello" : {
+    "/hello/permit-all" : {
       "get" : {
         "tags" : [ "Greeting Resource" ],
         "responses" : {
@@ -72,23 +90,6 @@
         }
       }
     },
-    "/hello/permit-all" : {
-      "get" : {
-        "tags" : [ "Greeting Resource" ],
-        "responses" : {
-          "200" : {
-            "description" : "OK",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Hello1"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/hello/roles-allowed" : {
       "get" : {
         "tags" : [ "Greeting Resource" ],
@@ -98,7 +99,7 @@
             "content" : {
               "text/plain" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Hello1"
+                  "$ref" : "#/components/schemas/Hello"
                 }
               }
             }
@@ -111,9 +112,9 @@
           }
         },
         "security" : [ {
-          "SecurityScheme" : [ "User", "Admin" ]
+          "SecurityScheme" : [ "user", "admin" ]
         }, {
-          "SecurityScheme" : [ "User", "Admin" ]
+          "SecurityScheme" : [ "user", "admin" ]
         } ]
       }
     }
@@ -128,18 +129,13 @@
           }
         }
       },
-      "Hello1" : {
-        "type" : "object",
-        "properties" : {
-          "value" : {
-            "type" : "string"
-          }
-        }
-      },
       "Login" : {
         "type" : "object",
         "properties" : {
-          "authentication" : {
+          "username" : {
+            "type" : "string"
+          },
+          "password" : {
             "type" : "string"
           }
         }
@@ -147,7 +143,7 @@
       "LoginResult" : {
         "type" : "object",
         "properties" : {
-          "jwt" : {
+          "token" : {
             "type" : "string"
           }
         }

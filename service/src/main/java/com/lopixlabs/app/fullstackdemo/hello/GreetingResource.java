@@ -26,7 +26,7 @@ public class GreetingResource {
     }
     @GET
     @Path("roles-allowed")
-    @RolesAllowed({ "User", "Admin" })
+    @RolesAllowed({ "user", "admin" })
     @Produces(MediaType.TEXT_PLAIN)
     public Hello helloRolesAllowed(@Context SecurityContext ctx) {
         return Hello.of(getResponseString(ctx) + ", birthdate: " + jwt.getClaim("birthdate").toString());
