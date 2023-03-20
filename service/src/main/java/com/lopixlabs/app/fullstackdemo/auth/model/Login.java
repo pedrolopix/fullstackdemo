@@ -1,4 +1,4 @@
-package com.lopixlabs.app.fullstackdemo.login.model;
+package com.lopixlabs.app.fullstackdemo.auth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

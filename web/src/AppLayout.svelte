@@ -9,7 +9,7 @@
 
   let darkTheme = false;
   let openMenu = false;
-  let userMenu = true;
+  let userMenu = false;
   let params = {}
   export let currentRoute
 
@@ -51,9 +51,9 @@
 <div class="h-full w-full print:hidden">
   <Layout>
     <div
-        class="fixed top-0 left-0 right-0 h-[var(--sat)] z-10 bg-light-surface dark:bg-dark-surface shadow-md dark:shadow-black"
+        class="fixed top-0 left-0 right-0 h-[var(--sat)] z-10 bg-light-surface dark:bg-dark-surface"
     />
-    <Layout.Header>
+    <Layout.Header class="shadow-none">
       <Button
           ariaLabel="open menu"
           shape="circle"

@@ -1,32 +1,31 @@
 package com.lopixlabs.app.fullstackdemo.security;
 
-import com.lopixlabs.app.fullstackdemo.users.UserRole;
+import static com.lopixlabs.app.fullstackdemo.security.Roles.REFRESH;
+
 import io.smallrye.jwt.build.Jwt;
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Locale;
+import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.microprofile.jwt.JsonWebToken;
 
 @ApplicationScoped
 @Slf4j
 public class TokenService {
     private final TokenSettings tokenSettings;
 
+    // TODO WIP
     public TokenService(final TokenSettings tokenSettings) {
         this.tokenSettings = tokenSettings;
     }
 
-    public String generate(String email, String username) {
+    public String generate(final String email, final List<String> roles) {
         try {
             return Jwt.issuer(tokenSettings.getIssuer())
                 .upn(email)
                 .issuedAt(Instant.now())
                 .expiresAt(Instant.now().plusSeconds(tokenSettings.getExpiresSeconds()))
-                .preferredUserName(username)
-                .groups(new HashSet<>(Arrays.asList(UserRole.USER.name().toLowerCase(Locale.ROOT))))
+                .groups(new HashSet<>(roles))
                 .sign();
         } catch (Exception e) {
             log.error("Error generate token: " + e.getMessage(), e);
@@ -34,21 +33,12 @@ public class TokenService {
         }
     }
 
-    /**
-     * @return the current time in seconds since epoch
-     */
-    public static int currentTimeInSecs() {
-        long currentTimeMS = System.currentTimeMillis();
-        return (int) (currentTimeMS / 1000);
-    }
-
-    public String renew(final JsonWebToken jwt) {
+    public String generateRefreshToken(String email) {
         return Jwt.issuer(tokenSettings.getIssuer())
-            .upn(jwt.getClaim("upn"))
+            .upn(email)
             .issuedAt(Instant.now())
-            .expiresAt(Instant.now().plusSeconds(tokenSettings.getExpiresSeconds()))
-            .preferredUserName(jwt.getName())
-            .groups(jwt.getGroups())
+            .expiresAt(Instant.now().plusSeconds(tokenSettings.getRefreshExpiresSeconds()))
+            .groups(new HashSet<>(List.of(REFRESH)))
             .sign();
     }
 }

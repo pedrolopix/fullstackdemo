@@ -19,9 +19,37 @@
     "description" : "Quarkus and svelte demo application"
   } ],
   "paths" : {
-    "/api/login" : {
+    "/api/auth/refresh" : {
+      "get" : {
+        "tags" : [ "Auth Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AuthResult"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ "refresh" ]
+        }, {
+          "SecurityScheme" : [ "refresh" ]
+        } ]
+      }
+    },
+    "/api/auth/signin" : {
       "post" : {
-        "tags" : [ "Login Resource" ],
+        "tags" : [ "Auth Resource" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -37,40 +65,12 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/LoginResult"
+                  "$ref" : "#/components/schemas/AuthResult"
                 }
               }
             }
           }
         }
-      }
-    },
-    "/api/me" : {
-      "get" : {
-        "tags" : [ "Login Resource" ],
-        "responses" : {
-          "200" : {
-            "description" : "OK",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/LoginResult"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Not Authorized"
-          },
-          "403" : {
-            "description" : "Not Allowed"
-          }
-        },
-        "security" : [ {
-          "SecurityScheme" : [ "user" ]
-        }, {
-          "SecurityScheme" : [ "user" ]
-        } ]
       }
     },
     "/hello/permit-all" : {
@@ -121,6 +121,17 @@
   },
   "components" : {
     "schemas" : {
+      "AuthResult" : {
+        "type" : "object",
+        "properties" : {
+          "token" : {
+            "type" : "string"
+          },
+          "refreshToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "Hello" : {
         "type" : "object",
         "properties" : {
@@ -136,14 +147,6 @@
             "type" : "string"
           },
           "password" : {
-            "type" : "string"
-          }
-        }
-      },
-      "LoginResult" : {
-        "type" : "object",
-        "properties" : {
-          "token" : {
             "type" : "string"
           }
         }

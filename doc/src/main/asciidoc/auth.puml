@@ -1,0 +1,27 @@
+@startuml
+autonumber 1
+
+alt User Login
+Client -> Server: Login \nPOST /api/auth/signin {username, password}
+activate Server
+Server --> Client: Authentication Response {token, refreshToken}
+deactivate Server
+end alt
+
+alt Access resource with Expired token
+Client -> Server: Request data with JWT on header
+activate Server
+Server --> Client: Token Expired
+deactivate Server
+end alt
+
+alt Refresh token
+Client -> Server: Send Refresh token request \nPOST /api/auth/refreshToken
+activate Server
+Server --> Client: Authentication Response {token, refreshToken}
+deactivate Server
+end alt
+
+
+
+@enduml

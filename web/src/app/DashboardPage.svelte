@@ -1,5 +1,15 @@
 <script lang="ts">
-  import EmptyPage from "../lib/EmptyPage.svelte";
-</script>
-<EmptyPage title="Dashboard"/>
+  import {onMount} from 'svelte'
+  import {httpClient} from "../http/HttpClient";
 
+  let token = "...."
+
+  onMount(async () => {
+    token = await httpClient.hello.helloRolesAllowedGet().then(x => x.data.value)
+    // token = await httpClient.hello.helloPermitAllGet().then(x => x.data.value)
+  })
+
+</script>
+<h1>Admin</h1>
+
+User name: {token}

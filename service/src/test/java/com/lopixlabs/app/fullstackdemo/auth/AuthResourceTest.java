@@ -1,8 +1,8 @@
-package com.lopixlabs.app.fullstackdemo.login;
+package com.lopixlabs.app.fullstackdemo.auth;
 
 import static io.restassured.RestAssured.given;
 
-import com.lopixlabs.app.fullstackdemo.login.model.LoginResult;
+import com.lopixlabs.app.fullstackdemo.auth.model.AuthResult;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
@@ -11,8 +11,8 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
-@TestHTTPEndpoint(LoginResource.class)
-class LoginResourceTest {
+@TestHTTPEndpoint(AuthResource.class)
+class AuthResourceTest {
 
     @Test
     void shouldNotAccessAdminWhenAnonymous() {
@@ -24,7 +24,7 @@ class LoginResourceTest {
 
     @Test
     void shouldLogin() {
-        final LoginResult loginResult = given()
+        final AuthResult loginResult = given()
             .when()
             .auth().basic("user", "pass")
             .accept(ContentType.JSON)
@@ -32,7 +32,7 @@ class LoginResourceTest {
             .get("/api/login")
             .then()
             .statusCode(HttpStatus.SC_OK)
-            .extract().body().as(LoginResult.class);
+            .extract().body().as(AuthResult.class);
 
         given()
             .when()
@@ -42,7 +42,7 @@ class LoginResourceTest {
             .post("/me")
             .then()
             .statusCode(HttpStatus.SC_OK)
-            .extract().body().as(LoginResult.class);
+            .extract().body().as(AuthResult.class);
     }
 
     private String getBasicAuthenticationHeader(String username, String password) {

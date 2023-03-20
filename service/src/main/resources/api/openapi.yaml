@@ -14,10 +14,30 @@ tags:
 - name: Demo
   description: Quarkus and svelte demo application
 paths:
-  /api/login:
+  /api/auth/refresh:
+    get:
+      tags:
+      - Auth Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResult'
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      security:
+      - SecurityScheme:
+        - refresh
+      - SecurityScheme:
+        - refresh
+  /api/auth/signin:
     post:
       tags:
-      - Login Resource
+      - Auth Resource
       requestBody:
         content:
           application/json:
@@ -29,27 +49,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginResult'
-  /api/me:
-    get:
-      tags:
-      - Login Resource
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LoginResult'
-        "401":
-          description: Not Authorized
-        "403":
-          description: Not Allowed
-      security:
-      - SecurityScheme:
-        - user
-      - SecurityScheme:
-        - user
+                $ref: '#/components/schemas/AuthResult'
   /hello/permit-all:
     get:
       tags:
@@ -85,6 +85,13 @@ paths:
         - admin
 components:
   schemas:
+    AuthResult:
+      type: object
+      properties:
+        token:
+          type: string
+        refreshToken:
+          type: string
     Hello:
       type: object
       properties:
@@ -96,9 +103,4 @@ components:
         username:
           type: string
         password:
-          type: string
-    LoginResult:
-      type: object
-      properties:
-        token:
           type: string
