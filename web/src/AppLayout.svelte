@@ -5,7 +5,8 @@
   import Navigation from "./lib/Navigation.svelte";
   import {app, sideBar} from "./settings";
   import Search from "./lib/Search.svelte";
-  import {brightness_4, brightness_5, cog, function_variant, lightning_bolt_circle, magnify} from "./lib/icons";
+  import {brightness_4, brightness_5} from "./lib/icons";
+  import {authService} from "./auth/AuthService";
 
   let darkTheme = false;
   let openMenu = false;
@@ -36,6 +37,10 @@
     const htmlElement = document.documentElement;
     htmlElement.classList.remove('dark');
   }
+  const logout = () => {
+    closeUserMenu();
+    authService.logout();
+  };
 
 </script>
 
@@ -73,27 +78,27 @@
       <div class="font-bold text-xl opacity-80 dark:opacity-100">{app.name}</div>
 
       <Layout.Header.Extra slot="extra">
-                <Toggle name="toggle" bind:on={darkTheme}>
-                  <Toggle.LeftIcon slot="left-icon" data={brightness_5}/>
-                  <Toggle.RightIcon slot="right-icon" data={brightness_4}/>
-                </Toggle>
-                <Search/>
-                <Dropdown bind:visible={userMenu}>
-                  <button
-                      aria-label="User menu"
-                      slot="trigger"
-                      on:click={toggleUserMenu}
-                      type="button"
-                      class="ml-4 h-10 w-10  text-sm flex rounded-full bg-light-icon-background dark:bg-dark-icon-background text-light-icon dark:text-dark-icon bg-center "
-                  >
-                    <Avatar src="broken-im11age.png" />
-                  </button>
-                  <Dropdown.Items slot="items" placement="right" alignment="end">
-                    <Dropdown.Items.Item on:click={closeUserMenu} label="Preferences"/>
-                    <Dropdown.Items.Divider />
-                    <Dropdown.Items.Item on:click={closeUserMenu} label="Logout"/>
-                  </Dropdown.Items>
-                </Dropdown>
+        <Toggle name="toggle" bind:on={darkTheme}>
+          <Toggle.LeftIcon slot="left-icon" data={brightness_5}/>
+          <Toggle.RightIcon slot="right-icon" data={brightness_4}/>
+        </Toggle>
+        <Search/>
+        <Dropdown bind:visible={userMenu}>
+          <button
+              aria-label="User menu"
+              slot="trigger"
+              on:click={toggleUserMenu}
+              type="button"
+              class="ml-4 h-10 w-10  text-sm flex rounded-full bg-light-icon-background dark:bg-dark-icon-background text-light-icon dark:text-dark-icon bg-center "
+          >
+            <Avatar src="broken-im11age.png"/>
+          </button>
+          <Dropdown.Items slot="items" placement="right" alignment="end">
+            <Dropdown.Items.Item on:click={closeUserMenu} label="Preferences"/>
+            <Dropdown.Items.Divider/>
+            <Dropdown.Items.Item on:click={logout} label="Logout"/>
+          </Dropdown.Items>
+        </Dropdown>
       </Layout.Header.Extra>
     </Layout.Header>
 

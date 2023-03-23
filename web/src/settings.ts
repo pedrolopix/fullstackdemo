@@ -15,7 +15,7 @@ function add(module: Module) {
 }
 
 export const dashboardModule = add({name: "dashboard", href: "/dashboard", label: "Dashboard", component: DashboardPage, iconData: chart_box});
-export const loginModule = add({name: "login", href: "login", label: "Login", component: Login});
+export const loginModule = add({name: "login", href: "/login", label: "Login", component: Login});
 export const emptyModule = add({name: "empty", href: "/empty", label: "Empty Page", component: EmptyPage, iconData:file_document});
 
 export const app: App = {

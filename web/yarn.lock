@@ -1061,6 +1061,18 @@ svelte-router-spa@^6.0.3:
   dependencies:
     url-params-parser "^1.0.3"
 
+svelte-use-form@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/svelte-use-form/-/svelte-use-form-2.6.1.tgz#bb6858ec18ba5858218dc8dc93aad8bf65d41ac2"
+  integrity sha512-+KSZIpel3S6JyqlIKRwDqO3I+L4AtOPkwo9kVzqsNJ8IjhhWRc1bXLSLBxCUlJa6LMbIHRLgO7CfqSVvgVlGgA==
+  dependencies:
+    svelte "^3.46.0"
+
+svelte@^3.46.0:
+  version "3.57.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.57.0.tgz#a3969cfe51f25f2a55e75f7b98dbd02c3af0980b"
+  integrity sha512-WMXEvF+RtAaclw0t3bPDTUe19pplMlfyKDsixbHQYgCWi9+O9VN0kXU1OppzrB9gPAvz4NALuoca2LfW2bOjTQ==
+
 svelte@^3.55.1:
   version "3.55.1"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.55.1.tgz#6f93b153e5248039906ce5fe196efdb9e05dfce8"
