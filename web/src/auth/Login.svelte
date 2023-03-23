@@ -1,16 +1,15 @@
 <script lang="ts">
   import {authService} from "./AuthService";
   import {login} from "./AuthStore";
-  import {CheckboxGroup, Input} from "stwui";
+  import {Input, Toggle} from "stwui";
   import {minLength, required, useForm} from "svelte-use-form";
 
 
-  let rememberMe: Boolean = !!($login.username || $login.password);
+  let rememberMe: Boolean = !!($login?.username || $login?.password);
 
   const form = useForm({
-    username: {initial: $login.username, validators: [required, minLength(1)]},
-    password: {initial: $login.password, validators: [required, minLength(1)]},
-    rememberMe: {initial: rememberMe ? "checked":""}
+    username: {initial: $login?.username || "", validators: [required, minLength(1)]},
+    password: {initial: $login?.password || "", validators: [required, minLength(1)]}
   });
 
   $: console.log($form.values);
@@ -19,7 +18,7 @@
 
   const doLogin = () => {
     if ($form.valid) {
-      authService.doLogin($form.username.value, $form.password.value, $form.rememberMe.value === "checked")
+      authService.doLogin($form.username.value, $form.password.value, rememberMe)
     }
   }
 
@@ -45,12 +44,13 @@
           <Input id="password" name="password" showPasswordToggle>
             <Input.Label slot="label">Password</Input.Label>
           </Input>
+          <Toggle name="rememberMe" bind:on="{rememberMe}">
+            <Toggle.ContentRight slot="content-right">
+              <Toggle.ContentRight.Label slot="label">Remember Me</Toggle.ContentRight.Label>
+            </Toggle.ContentRight>
+          </Toggle>
           <div class="mb-6 flex items-center justify-between">
-            <CheckboxGroup>
-              <CheckboxGroup.Checkbox id="rememberMe" name="rememberMe">
-                <CheckboxGroup.Checkbox.Label slot="label">Remember Me</CheckboxGroup.Checkbox.Label>
-              </CheckboxGroup.Checkbox>
-            </CheckboxGroup>
+
             <!--            <a-->
             <!--                href="#!"-->
             <!--                class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"-->
@@ -62,10 +62,10 @@
               type="submit"
               class="inline-block w-full rounded bg-primary px-7 pt-3 pb-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
               data-te-ripple-init
+              data-suf-ignore
               data-te-ripple-color="light">
             Sign in
           </button>
-
         </form>
       </div>
     </div>
