@@ -21,7 +21,7 @@ export const authService = {
     }
   },
   logout: () => {
-    store.clearLogin();
+    store.clearAuthData();
     navigateTo("login");
   }
 }
