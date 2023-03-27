@@ -41,6 +41,7 @@ axiosInstance.interceptors.response.use(resp => resp, async error => {
       store.setAuthData(response.data);
       setAuthData(response.data);
       error.config.headers.Authorization = `Bearer ${response.data.token}`;
+      refresh = false;
       return axiosInstance(error.config);
     }
   }
