@@ -1,15 +1,26 @@
 <script lang="ts">
   import {onMount} from 'svelte'
   import {httpClient} from "../http/HttpClient";
+  import PLButton from "../components/PLButton.svelte";
 
-  let token = "...."
+  let result = "...."
+
+  async function refresh() {
+    result = "....";
+    httpClient.hello.helloRolesAllowedGet().then(x => {
+      result = x.data.value
+    })
+  }
 
   onMount(async () => {
-    token = await httpClient.hello.helloRolesAllowedGet().then(x => x.data.value)
+    await refresh();
     // token = await httpClient.hello.helloPermitAllGet().then(x => x.data.value)
   })
 
 </script>
 <h1>Admin</h1>
 
-User name: {token}
+User name: {result}
+<p></p>
+
+<PLButton on:click={refresh}>Refresh</PLButton>

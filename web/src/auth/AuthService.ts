@@ -13,7 +13,12 @@ export const authService = {
     } else {
       store.clearLogin();
     }
-    const response = await httpClient.auth.apiAuthSigninPost(login);
+    const response = await httpClient.auth.apiAuthSigninPost(login,
+        {
+          headers: {
+            Authorization: null
+          }
+        });
     if (response.status === 200) {
       console.log("login ok")
       authData.set(response.data);

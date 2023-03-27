@@ -69,7 +69,7 @@ paths:
         "200":
           description: OK
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Hello'
         "401":
