@@ -96,10 +96,13 @@ const refreshToken = async () => {
 //     }
 // );
 
-const getFactory = (baseUrl: string) => ({
-  hello: GreetingResourceApiFactory(undefined, baseUrl, axiosInstance),
-  auth: AuthResourceApiFactory(undefined, baseUrl, axiosInstance)
-});
+const getFactory = (baseUrl: string) => {
+  console.log("base url: " + baseUrl);
+  return {
+    hello: GreetingResourceApiFactory(undefined, baseUrl, axiosInstance),
+    auth: AuthResourceApiFactory(undefined, baseUrl, axiosInstance)
+  }
+};
 
-export const httpClient = getFactory("http://localhost:8080")
+export const httpClient = getFactory(import.meta.env.VITE_BASE_URL)
 
