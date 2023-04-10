@@ -11,9 +11,7 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
-@TestHTTPEndpoint(AuthResource.class)
 class AuthResourceTest {
-
 
     @Test
     void shouldLogin() {
