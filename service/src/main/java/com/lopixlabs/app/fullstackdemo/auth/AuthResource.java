@@ -31,14 +31,14 @@ public class AuthResource {
     }
 
     @POST
-    @Path("/signin")
+    @Path("signin")
     @PermitAll
     public AuthResult login(final Login login) {
         return authService.login(login);
     }
 
     @GET
-    @Path("/refresh")
+    @Path("refresh")
     @RolesAllowed(REFRESH)
     public AuthResult refresh() {
         return authService.refresh(jwt);

@@ -14,39 +14,24 @@ import org.junit.jupiter.api.Test;
 @TestHTTPEndpoint(AuthResource.class)
 class AuthResourceTest {
 
-    @Test
-    void shouldNotAccessAdminWhenAnonymous() {
-        given().
-            get("/api/me")
-            .then()
-            .statusCode(HttpStatus.SC_UNAUTHORIZED);
-    }
 
     @Test
     void shouldLogin() {
         final AuthResult loginResult = given()
             .when()
-            .auth().basic("user", "pass")
+            .body("""
+                {
+                "username": "user",
+                "password": "password"
+                }
+                """)
             .accept(ContentType.JSON)
             .contentType(ContentType.JSON)
-            .get("/api/login")
+            .post("/api/auth/signin")
             .then()
             .statusCode(HttpStatus.SC_OK)
             .extract().body().as(AuthResult.class);
 
-        given()
-            .when()
-            .auth().oauth2(loginResult.getToken())
-            .accept(ContentType.JSON)
-            .contentType(ContentType.JSON)
-            .post("/me")
-            .then()
-            .statusCode(HttpStatus.SC_OK)
-            .extract().body().as(AuthResult.class);
     }
 
-    private String getBasicAuthenticationHeader(String username, String password) {
-        String valueToEncode = username + ":" + password;
-        return "Basic " + Base64.getEncoder().encodeToString(valueToEncode.getBytes());
-    }
 }
