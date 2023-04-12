@@ -586,10 +586,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios-case-converter@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/axios-case-converter/-/axios-case-converter-0.9.0.tgz#9f47f641ae3f8c04a5395370601342e4f8c33c77"
-  integrity sha512-G6tOanR1cdIrBtRyiPvR+xXyWCCZacSw8LtT8bmImvpye+XiyoOlLluz0N61IfetznNQ9BeMi5yA0rIyYDr8mQ==
+axios-case-converter@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/axios-case-converter/-/axios-case-converter-0.11.1.tgz#69671f3adc435af8b61d86effd5f4a58f0559c51"
+  integrity sha512-i5hrkBg7SE9jsm2Q+ClznR5DsKcYXChH6Cc3Rhx2p4gdIfJwvvO5/ATcAg/vN2UVzGE2B1eR1O4VuEGkICdJdQ==
   dependencies:
     camel-case "^4.1.1"
     header-case "^2.0.3"
