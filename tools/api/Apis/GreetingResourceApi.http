@@ -1,5 +1,9 @@
 ## GreetingResourceApi
 
 ### 
-# @name helloGet
-GET http://localhost:8080/hello
+# @name helloPermitAllGet
+GET http://localhost:8080/hello/permit-all
+
+### 
+# @name helloRolesAllowedGet
+GET http://localhost:8080/hello/roles-allowed

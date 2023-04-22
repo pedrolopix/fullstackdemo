@@ -14,8 +14,8 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
-        <node.version>v17.5.0</node.version>
-        <yarn.version>v1.22.17</yarn.version>
+        <node.version>v18.14.2</node.version>
+        <yarn.version>v1.22.19</yarn.version>
     </properties>
 
     <profiles>

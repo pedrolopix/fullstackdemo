@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.3",
   "info" : {
-    "title" : "service API",
-    "version" : "1.0.0-SNAPSHOT"
+    "title" : "Quarkus and svelte demo application",
+    "version" : "1.0.0"
   },
   "servers" : [ {
     "url" : "http://localhost:8080",
@@ -11,8 +11,69 @@
     "url" : "http://0.0.0.0:8080",
     "description" : "Auto generated value"
   } ],
+  "security" : [ {
+    "basicAuth" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Demo",
+    "description" : "Quarkus and svelte demo application"
+  } ],
   "paths" : {
-    "/hello" : {
+    "/api/auth/refresh" : {
+      "get" : {
+        "tags" : [ "Auth Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AuthResult"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ "refresh" ]
+        }, {
+          "SecurityScheme" : [ "refresh" ]
+        } ]
+      }
+    },
+    "/api/auth/signin" : {
+      "post" : {
+        "tags" : [ "Auth Resource" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AuthResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hello/permit-all" : {
       "get" : {
         "tags" : [ "Greeting Resource" ],
         "responses" : {
@@ -28,14 +89,64 @@
           }
         }
       }
+    },
+    "/hello/roles-allowed" : {
+      "get" : {
+        "tags" : [ "Greeting Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Hello"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ "user", "admin" ]
+        }, {
+          "SecurityScheme" : [ "user", "admin" ]
+        } ]
+      }
     }
   },
   "components" : {
     "schemas" : {
+      "AuthResult" : {
+        "type" : "object",
+        "properties" : {
+          "token" : {
+            "type" : "string"
+          },
+          "refreshToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "Hello" : {
         "type" : "object",
         "properties" : {
           "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Login" : {
+        "type" : "object",
+        "properties" : {
+          "username" : {
+            "type" : "string"
+          },
+          "password" : {
             "type" : "string"
           }
         }

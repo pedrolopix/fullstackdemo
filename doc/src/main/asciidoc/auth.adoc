@@ -1,0 +1,7 @@
+
+The diagram shows flow of how we implemented Authentication process with Access Token and Refresh Token.
+
+["plantuml","containers",svg]
+plantuml::auth.puml[]
+
+

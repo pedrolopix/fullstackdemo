@@ -1,0 +1,14 @@
+
+|===
+|Property |Description
+|iss|The issuer of the token, typically the server that generated it.
+|sub|The subject of the token, typically the user to whom the token pertains.
+|aud|The intended audience of the token, typically the server(s) that should accept and validate the token.
+|exp|The expiration time of the token, after which it should no longer be accepted.
+|iat|The time at which the token was issued.
+|jti|The unique identifier of the token, which can be used to prevent replay attacks.
+
+|===
+
+
+
