@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@mantine/core": "^3.6.8",
-    "@mantine/hooks": "^3.6.8",
+    "@mantine/hooks": "^3.6.14",
     "axios": "^0.27.2",
     "axios-case-converter": "^0.9.0",
     "react": "^18.2.0",
