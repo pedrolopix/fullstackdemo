@@ -10,7 +10,7 @@
   "dependencies": {
     "@mantine/core": "^3.6.8",
     "@mantine/hooks": "^3.6.8",
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "axios-case-converter": "^0.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
