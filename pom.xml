@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <compiler-plugin.version>3.12.0</compiler-plugin.version>
+        <compiler-plugin.version>3.12.1</compiler-plugin.version>
         <failsafe.useModulePath>false</failsafe.useModulePath>
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
