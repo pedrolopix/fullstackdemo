@@ -4,7 +4,7 @@ tasks:
   dev-dependencies:
     cmd: docker compose up -d database
 
-  build-all:
+  build:
     cmds:
       - task: build-openapi
       - task: web-build
@@ -13,28 +13,25 @@ tasks:
   build-fast:
     cmd: mvn package -Pprod -DskipTests -DskipChecks
 
-  build:
-    cmd: mvn package -Pprod
-
   build-openapi:
     cmd: mvn package -Popen-api -DskipTests -DskipChecks -am -pl "service"
 
   run:
     cmd: docker compose up -d service --build
 
-  dev:
+  be:dev:
     cmds:
       - task: dev-dependencies
       - mvn compile quarkus:dev -am -pl "service"
 
-  clean:
+  be:clean:
     cmd: mvn clean
 
-  web-build:
+  fe:build:
     cmd: mvn clean package -pl web -DskipTests
 
-  dev-web:
-    cmd: yarn --cwd ./web dev
+  fe:dev:
+    cmd: yarn --cwd ./web dev  --open
 
   generate-jwt:
     cmd: mvn exec:java -pl "service" -Dexec.mainClass=com.lopixlabs.app.fullstackdemo.GenerateToken -Dexec.classpathScope=test -Dsmallrye.jwt.sign.key.location=privateKey.pem
