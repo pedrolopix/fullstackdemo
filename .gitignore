@@ -62,3 +62,5 @@ dist-ssr
 *.sln
 *.sw?
 /tools/api/
+/web/node/
+/web/_old/
