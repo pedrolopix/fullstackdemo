@@ -126,7 +126,7 @@
                                 <configuration>
                                     <inputSpec>${project.basedir}/src/main/resources/api/openapi.yaml</inputSpec>
                                     <!--suppress UnresolvedMavenProperty -->
-                                    <output>${session.executionRootDirectory}/web/src/http/generated</output>
+                                    <output>${session.executionRootDirectory}/web/src/lib/http/generated</output>
                                     <generatorName>typescript-axios</generatorName>
                                     <skipValidateSpec>true</skipValidateSpec>
                                     <skipIfSpecIsUnchanged>false</skipIfSpecIsUnchanged>
