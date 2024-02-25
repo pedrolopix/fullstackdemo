@@ -2,7 +2,7 @@
 
 </script>
 
-auth!
+login
 
 
 
