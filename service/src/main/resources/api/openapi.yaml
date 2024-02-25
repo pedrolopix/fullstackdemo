@@ -25,10 +25,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthResult'
-        "403":
-          description: Not Allowed
         "401":
           description: Not Authorized
+        "403":
+          description: Not Allowed
       security:
       - SecurityScheme: []
   /api/auth/signin:
@@ -69,10 +69,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Hello'
-        "403":
-          description: Not Allowed
         "401":
           description: Not Authorized
+        "403":
+          description: Not Allowed
       security:
       - SecurityScheme: []
 components:

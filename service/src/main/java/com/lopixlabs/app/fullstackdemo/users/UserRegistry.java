@@ -6,6 +6,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class UserRegistry implements PanacheRepositoryBase<User, String> {
+
     public User getUser(final String username, final String password) {
         final PanacheQuery<User> userQuery = find("username= ?1", username);
         return userQuery.stream()
