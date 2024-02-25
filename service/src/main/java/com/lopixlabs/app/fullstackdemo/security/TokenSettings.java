@@ -1,6 +1,7 @@
 package com.lopixlabs.app.fullstackdemo.security;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import lombok.Getter;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -12,7 +13,7 @@ public class TokenSettings {
     private final String issuer;
     private final int expiresSeconds;
     private final int refreshExpiresSeconds;
-
+    @Inject
     public TokenSettings(
         @ConfigProperty(name = "mp.jwt.verify.issuer") final String issuer,
         @ConfigProperty(name = "jwt.expires", defaultValue = EXPIRE_5MIN) final int expiresSeconds,

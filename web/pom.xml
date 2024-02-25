@@ -85,7 +85,7 @@
                                     <outputDirectory>${basedir}/target/classes/META-INF/resources</outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${basedir}/dist</directory>
+                                            <directory>${basedir}/build</directory>
                                             <filtering>false</filtering>
                                         </resource>
                                     </resources>

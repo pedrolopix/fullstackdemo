@@ -25,15 +25,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthResult'
-        "401":
-          description: Not Authorized
         "403":
           description: Not Allowed
+        "401":
+          description: Not Authorized
       security:
-      - SecurityScheme:
-        - refresh
-      - SecurityScheme:
-        - refresh
+      - SecurityScheme: []
   /api/auth/signin:
     post:
       tags:
@@ -72,17 +69,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Hello'
-        "401":
-          description: Not Authorized
         "403":
           description: Not Allowed
+        "401":
+          description: Not Authorized
       security:
-      - SecurityScheme:
-        - user
-        - admin
-      - SecurityScheme:
-        - user
-        - admin
+      - SecurityScheme: []
 components:
   schemas:
     AuthResult:
@@ -104,3 +96,9 @@ components:
           type: string
         password:
           type: string
+  securitySchemes:
+    SecurityScheme:
+      type: http
+      description: Authentication
+      scheme: bearer
+      bearerFormat: JWT

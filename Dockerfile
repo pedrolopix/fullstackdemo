@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jdk
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 WORKDIR /app

@@ -3,10 +3,11 @@ package com.lopixlabs.app.fullstackdemo.security;
 import static com.lopixlabs.app.fullstackdemo.security.Roles.REFRESH;
 
 import io.smallrye.jwt.build.Jwt;
+import jakarta.inject.Inject;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
 
 @ApplicationScoped
@@ -15,6 +16,7 @@ public class TokenService {
     private final TokenSettings tokenSettings;
 
     // TODO WIP
+    @Inject
     public TokenService(final TokenSettings tokenSettings) {
         this.tokenSettings = tokenSettings;
     }

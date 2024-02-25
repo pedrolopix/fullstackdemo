@@ -1,0 +1,10 @@
+version: 3
+
+
+tasks:
+  dev:
+    cmds:
+      - yarn run dev --open
+  build:
+    cmds:
+      - yarn run build

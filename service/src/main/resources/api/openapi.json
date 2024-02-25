@@ -33,17 +33,15 @@
               }
             }
           },
-          "401" : {
-            "description" : "Not Authorized"
-          },
           "403" : {
             "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
           }
         },
         "security" : [ {
-          "SecurityScheme" : [ "refresh" ]
-        }, {
-          "SecurityScheme" : [ "refresh" ]
+          "SecurityScheme" : [ ]
         } ]
       }
     },
@@ -104,17 +102,15 @@
               }
             }
           },
-          "401" : {
-            "description" : "Not Authorized"
-          },
           "403" : {
             "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
           }
         },
         "security" : [ {
-          "SecurityScheme" : [ "user", "admin" ]
-        }, {
-          "SecurityScheme" : [ "user", "admin" ]
+          "SecurityScheme" : [ ]
         } ]
       }
     }
@@ -150,6 +146,14 @@
             "type" : "string"
           }
         }
+      }
+    },
+    "securitySchemes" : {
+      "SecurityScheme" : {
+        "type" : "http",
+        "description" : "Authentication",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
       }
     }
   }

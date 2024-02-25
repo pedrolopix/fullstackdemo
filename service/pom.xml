@@ -13,11 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-arc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-jackson</artifactId>
+            <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -38,6 +34,10 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-panache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -71,12 +71,10 @@
         <dependency>
             <groupId>io.quarkus.resteasy.reactive</groupId>
             <artifactId>resteasy-reactive-common</artifactId>
-            <version>2.16.4.Final</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-security-jpa</artifactId>
-            <version>2.16.4.Final</version>
         </dependency>
     </dependencies>
     <build>
@@ -87,6 +85,23 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler-plugin.version}</version>
+                <configuration>
+                    <parameters>${maven.compiler.parameters}</parameters>
+                    <annotationProcessorPaths>
+                        <!-- Your existing annotation processor(s)... -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>io.quarkus</groupId>
+                            <artifactId>quarkus-panache-common</artifactId>
+                            <version>${quarkus.platform.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -162,6 +177,9 @@
         </profile>
 
         <profile>
+            <properties>
+                <quarkus.package.type>native</quarkus.package.type>
+            </properties>
             <id>native</id>
             <activation>
                 <property>
@@ -190,9 +208,6 @@
                     </plugin>
                 </plugins>
             </build>
-            <properties>
-                <quarkus.package.type>native</quarkus.package.type>
-            </properties>
         </profile>
     </profiles>
 </project>
