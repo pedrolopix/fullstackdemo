@@ -30,7 +30,7 @@
                             <followSymLinks>false</followSymLinks>
                             <filesets>
                                 <fileset>
-                                    <directory>${project.basedir}/src/http/generated</directory>
+                                    <directory>${project.basedir}/src/lib/http/generated</directory>
                                 </fileset>
                             </filesets>
                         </configuration>
