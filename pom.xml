@@ -19,7 +19,7 @@
         <surefire-plugin.version>3.5.2</surefire-plugin.version>
         <lombok.version>1.18.36</lombok.version>
         <openapi-generator-maven-plugin.version>7.11.0</openapi-generator-maven-plugin.version>
-        <maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
+        <maven-clean-plugin.version>3.4.1</maven-clean-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
     </properties>
 
