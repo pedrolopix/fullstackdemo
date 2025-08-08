@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mantine/core": "^3.6.8",
+    "@mantine/core": "^3.6.14",
     "@mantine/hooks": "^3.6.8",
     "axios": "^1.8.2",
     "axios-case-converter": "^1.1.1",

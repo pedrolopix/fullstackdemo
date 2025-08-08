@@ -530,11 +530,12 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@mantine/core@^3.6.8":
-  version "3.6.9"
-  resolved "https://registry.npmjs.org/@mantine/core/-/core-3.6.9.tgz"
+"@mantine/core@^3.6.14":
+  version "3.6.14"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-3.6.14.tgz#0b36b2f94d021e1466577f1dbf4b490f6249e4db"
+  integrity sha512-O8x2uvLND9omsqI3hdkb59tkOyY7U4iSj+ZtKb9iPxejRxg+xv2BTlc5hxr5wFyu6gGv5NOoAelrdI/4g/e+1A==
   dependencies:
-    "@mantine/styles" "3.6.9"
+    "@mantine/styles" "3.6.14"
     "@popperjs/core" "^2.9.3"
     "@radix-ui/react-scroll-area" "^0.1.1"
     clsx "^1.1.1"
@@ -545,9 +546,10 @@
   version "3.6.9"
   resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-3.6.9.tgz"
 
-"@mantine/styles@3.6.9":
-  version "3.6.9"
-  resolved "https://registry.npmjs.org/@mantine/styles/-/styles-3.6.9.tgz"
+"@mantine/styles@3.6.14":
+  version "3.6.14"
+  resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-3.6.14.tgz#c0325ddcf109d52140617b1d47ad7f444d258ae3"
+  integrity sha512-LtTrR1TMs7lGIL7jXrV8mFVLfIvZ0aRshSXXREyFe1X1T+qIOJlBFy/kconkSJdJmqpJ3T5yXivQebz9h8OT4Q==
   dependencies:
     "@emotion/cache" "^11.7.1"
     "@emotion/react" "^11.7.1"
