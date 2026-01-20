@@ -18,7 +18,7 @@
         <quarkus.platform.version>2.16.6.Final</quarkus.platform.version>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
         <lombok.version>1.18.42</lombok.version>
-        <openapi-generator-maven-plugin.version>7.18.0</openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.19.0</openapi-generator-maven-plugin.version>
         <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
         <maven-resources-plugin.version>3.4.0</maven-resources-plugin.version>
     </properties>
